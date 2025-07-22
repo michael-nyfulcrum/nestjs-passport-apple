@@ -81,13 +81,7 @@ class AppleStrategy extends passport.Strategy {
         this._sessionKey = options.sessionKey || 'apple:' + url.parse(this._authorizationURL).hostname;
         this._clientSecretExpiry = options.clientSecretExpiry || '5 minutes';
         this._verifyNonce = options.verifyNonce;
-
-        if (options.state) {
-            this._stateStore = new SessionStateStore({ key: this._sessionKey });
-        } else {
-            this._stateStore = new NullStateStore();
-        }
-
+        this._stateStore = new NullStateStore();
         this._passReqToCallback = options.passReqToCallback;
     }
 
